@@ -1,0 +1,19 @@
+# Gizli bilgiler - ASLA repoya ekleme
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+
+# Windows
+*.vbs
+
+# Debug ve test dosyalari
+debug_gpu.py
+test_gpu.py
+itopya_block.html
+setup_server.sh

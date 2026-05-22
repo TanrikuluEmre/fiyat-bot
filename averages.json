@@ -1,0 +1,17 @@
+{
+  "DDR3": {
+    "ort_fiyat_per_gb": 242.4,
+    "urun_sayisi": 1,
+    "esik_fiyat_per_gb": 121.2
+  },
+  "DDR4": {
+    "ort_fiyat_per_gb": 528.0,
+    "urun_sayisi": 11,
+    "esik_fiyat_per_gb": 264.0
+  },
+  "DDR5": {
+    "ort_fiyat_per_gb": 863.2,
+    "urun_sayisi": 12,
+    "esik_fiyat_per_gb": 431.6
+  }
+}

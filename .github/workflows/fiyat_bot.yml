@@ -1,0 +1,48 @@
+name: Fiyat Bot
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # Her 10 dakikada bir
+  workflow_dispatch:           # Manuel calistirma butonu
+
+jobs:
+  kontrol:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write          # JSON dosyalarini commit etmek icin
+
+    steps:
+      - name: Repoyu indir
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Playwright cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-v1
+
+      - name: Paketleri kur
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Fiyatlari kontrol et
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python kontrol.py
+
+      - name: Fiyat verilerini kaydet
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add prices.json gpu_prices.json averages.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "bot: fiyat guncelle [skip ci]"
+          git push || true
