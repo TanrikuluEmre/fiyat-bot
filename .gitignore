@@ -17,3 +17,13 @@ debug_gpu.py
 test_gpu.py
 itopya_block.html
 setup_server.sh
+
+# Bot runtime dosyalari (lokal, repoya girmesin)
+gorulmus_ilanlar.json
+prices.json
+averages.json
+gpu_prices.json
+
+# Ekran goruntuleri ve debug HTML
+*.png
+*.html
