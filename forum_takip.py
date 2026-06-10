@@ -26,7 +26,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 FORUM_URL       = "https://forum.donanimarsivi.com/forumlar/Sicakfirsatlar/"
 GORULMUS_DOSYA  = Path(__file__).parent / "gorulmus_ilanlar.json"
 KONTROL_ARALIGI = 60          # saniye
-MAX_HATALI_ISTEK = 5          # Bu kadar ardışık hatadan sonra Telegram'a bildir
+MAX_HATALI_ISTEK = 60         # Bu kadar ardışık hatadan sonra Telegram'a bildir (60dk = 1 saat)
 
 HEADERS = {
     "User-Agent": (
